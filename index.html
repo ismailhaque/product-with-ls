@@ -4,41 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fiverr order</title>
+    <title>Product Add</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
 </head>
 <body>
-    <div class="box container">
+    <div class="my-4 container">
         <div class="row">
-            <div class="col-lg-6 col-md-12 mx-auto">
-                <div class="card-title">
-                    <h1 class="text-white p-2 mx-auto bg-primary">TIME COUNTER</h1>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Product
+            </button>
+            
+            <!-- Modal -->
+            <div class="add modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Product Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- body -->
+                    <div class="form_body modal-body">
+                        <!-- form -->
+                        <form id="devs_form">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Product Name" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" name="image" placeholder="Product Image URL" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" name="regular" placeholder="Regular Price" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" name="sale" placeholder="Sale Price" class="form-control">
+                            </div>
+                            <br>
+                            <div>
+                                <input type="submit" class="btn btn-primary form-control" value="Add Now" data-bs-dismiss="modal">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body shadow">
-                    <form id="order_form">
-                        <div>
-                            <input type="date" name="date" class="form-control">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="time" name="time" class="form-control">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="submit" class="btn btn-success w-100" value="ORDER NOW">
-                        </div>
-                    </form>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div id="counter" class="alert ">
+    </div>
+    <hr>
+    <!-- Data -->
+    <div class="container">
+        <div id="product_aria" class="row">
             
         </div>
     </div>
 
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/function.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

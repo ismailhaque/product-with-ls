@@ -3,18 +3,13 @@
     padding: 0;
 }
 
-.box {
-    margin: 200px auto;
+#solink {
+    display: block;
 }
-#counter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-#counter p {
-    flex-basis: 20%;
-    text-align: center;
-    font-size: 40px;
-    font-weight: 700;
-    color: black;
+
+#solink a{
+    text-decoration: none;
+    color: rgb(4, 0, 255);
+    font-size: 30px;
+    padding: 5px;
 }

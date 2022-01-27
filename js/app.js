@@ -1,40 +1,57 @@
-const order_form = document.querySelector(`#order_form`);
-const counter = document.querySelector(`#counter`);
+const devs_form = document.getElementById(`devs_form`);
+const form_body = document.querySelector(`.form_body`);
+const product_aria = document.getElementById(`product_aria`);
 
-order_form.addEventListener('submit', function(e){
+devs_form.addEventListener(`submit`, function (e) {
   e.preventDefault();
 
-  let date = this.querySelector(`input[type="date"]`).value;
-  let time = this.querySelector(`input[type="time"]`).value;
+  let name = this.querySelector(`input[name="name"]`);
+  let image = this.querySelector(`input[name="image"]`);
+  let regular = this.querySelector(`input[name="regular"]`);
+  let sale = this.querySelector(`input[name="sale"]`);
 
-  let reload = setInterval(() => {
+  // Data array
+  let data_arr;
+  if (dataGet(`products`)) {
+    data_arr = dataGet(`products`);
+  } else {
+    data_arr = [];
+  }
 
-    let start_date = new Date();
-    let end_date = new Date( date + ' ' + time );
+  // data push
+  data_arr.push({
+    name      : name.value,
+    image     : image.value,
+    regular     : regular.value,
+    sale    : sale.value,
+  })
+
+  dataSend(`products`, data_arr);
   
-    let time_diff = Math.floor((end_date.getTime() - start_date.getTime()) / 1000);
-  
-    let total_sec = time_diff;
-    let total_min = Math.abs(Math.floor( total_sec / 60 ));
-    let total_hour = Math.abs(Math.floor( total_min / 60 ));
-    let total_day = Math.abs(Math.floor( total_hour / 24 ));
+  allData();
 
-    let hours = total_hour - ( total_day * 24 );
-    let mins = total_min - ( total_day * 24 * 60 ) - ( hours * 60 );
-    let secs = total_sec - ( total_day * 24 * 60 * 60 ) - ( hours * 60 * 60 ) - ( mins * 60 );
+});
 
-    counter.innerHTML = `<p><span>Days</span><br><span id="day">${ total_day }</span></p>
-    <p><span>Hours</span><br><span id="hour">${ hours }</span></p>
-    <p><span>Minutes</span><br><span id="min">${ mins }</span></p>
-    <p><span>Seconds</span><br><span id="sec">${ secs }</span></p>`;
+allData();
+function allData() {
 
-    counter.classList.add('alert-primary')
+  let all_data = dataGet(`products`);
 
-    if ( total_day == '0' && hours == '0' && mins == '0' && secs == '0' ) {
-      clearInterval(reload);
-      counter.classList.add('alert-danger')
-    }
-    
-  }, 1000);
-  
-})
+  let data = ``;
+
+  all_data.map( d => {
+        data += `
+        <div class="col-md-3">
+                <div class="card">
+                  <img style=" width: 100%; height: 250px; object-fit: cover; " src="${ d.image }" alt="image">
+                  <h4>${ d.name }</h4>
+                  <p><span class="regular"><del>${d.regular}</del></span><span>${d.sale}</span></p>
+                  <button type="submit" class="btn btn-success">Add To Cart</button>
+                </div>
+            </div>
+        `;
+  });
+
+  product_aria.innerHTML = data;
+}
+
